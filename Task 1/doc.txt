@@ -1,0 +1,114 @@
+1.Import Libraries:
+
+python
+Copy code:
+
+import random
+import math
+
+The random module is imported to generate random numbers.
+The math module is imported to use mathematical functions, specifically math.log2 and math. Ceil.
+
+2.Define the Function:
+
+python
+Copy code:
+
+def guessing_game():
+
+The guessing_game function is defined. This function will contain the entire logic for the game.
+
+3.User Inputs the Range:
+
+python
+Copy code:
+
+lower_bound = int(input("Enter the lower bound of the range: "))
+upper_bound = int(input("Enter the upper bound of the range: "))
+
+The function prompts the user to enter the lower and upper bounds for the range within which the random number will be generated.
+These inputs are converted to integers and stored in the variables lower_bound and upper_bound.
+
+4.Generate a Random Number:
+
+python
+Copy code:
+
+random_number = random.randint(lower_bound, upper_bound)
+A random integer within the specified range [lower_bound, upper_bound] is generated using the random.randint function and stored in the variable random_number.
+
+5.Calculate Maximum Number of Guesses:
+
+python
+Copy code:
+max_guesses = math.ceil(math.log2(upper_bound - lower_bound + 1))
+
+The maximum number of guesses allowed is calculated using the formula ceil(log2(upper_bound - lower_bound + 1)).
+This ensures that the user has a fair number of attempts to guess the number based on the size of the range.
+
+6.Inform the User:
+
+python
+Copy code:
+
+print(f"\nYou have {max_guesses} attempts to guess the number.\n")
+
+This line informs the user about the maximum number of attempts they have to guess the number.
+
+7.Initialize Guess Count:
+
+python
+Copy code:
+
+guess_count = 0
+
+A variable guess_count is initialized to keep track of the number of guesses the user has made.
+
+8.Guessing Loop:
+
+python
+Copy code:
+
+while guess_count < max_guesses:
+    guess = int(input("Enter your guess: "))
+    guess_count += 1
+
+The program enters a while loop that continues until the user has exhausted all their guesses (guess_count < max_guesses).
+Inside the loop, the user is prompted to enter a guess, which is converted to an integer and stored in the variable guess.
+The guess_count is incremented by 1 each time the user makes a guess.
+
+9.Check the Guess:
+
+python
+Copy code:
+
+if guess > random_number:
+    print("Try Again! You guessed too high.")
+elif guess < random_number:
+    print("Try Again! You guessed too small.")
+else:
+    print(f"Congratulations! You guessed the number in {guess_count} attempts.")
+    return
+
+The program checks if the user's guess is higher than, lower than, or equal to the random_number.
+If the guess is too high, it informs the user.
+If the guess is too low, it informs the user.
+If the guess is correct, it congratulates the user and exits the function using return.
+
+10.Out of Guesses:
+
+python
+Copy code:
+
+print("Better Luck Next Time! You've exhausted all your guesses.")
+print(f"The correct number was: {random_number}")
+If the user exhausts all their guesses without guessing the number correctly, the program informs the user that they are out of guesses and reveals the correct number.
+
+11.Run the Game:
+
+python
+Copy code:
+
+guessing_game()
+The guessing_game function is called to start the game.
+This is a complete breakdown of the guessing_game function. It guides the user through guessing a randomly generated number within a specified range, providing feedback after each guess and limiting the number of attempts based on the size of the range.
